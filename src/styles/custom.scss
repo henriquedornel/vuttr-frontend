@@ -1,0 +1,62 @@
+$body-color: #170C3A;
+$white: #fff;
+$blue: #365df0;
+$light-blue: #e1e7fd;
+$white-blue: #b9c6fa;
+$green: #0dcb7d;
+$light-green: #12db89;
+$cyan: #2497b2;
+$red: #f95e5a;
+$light-red: #feefee;
+
+$gray-100: #f5f4f6;
+$gray-200: #ebeaed;
+$gray-300: #dedce1;
+$gray-400: #b1adb9;
+
+$font-family-base: 'Source Sans Pro', sans-serif;
+$headings-font-family: 'Source Sans Pro Semibold', sans-serif;
+$headings-font-weight: 600;
+
+$primary: $blue;
+$secondary: $light-blue;
+$success: $green;
+$info: $cyan;
+
+$input-btn-focus-width: 0;
+$border-radius: 5px;
+
+$input-color: $body-color;
+$input-placeholder-color: $gray-400;
+$input-bg: $gray-100;
+$input-border-color: $gray-200;
+$input-focus-bg: $gray-200;
+$input-focus-border-color: $gray-300;
+
+$btn-border-width: 0;
+$btn-padding-x: 1.5rem;
+$btn-padding-y: 0.5rem;
+$yiq-text-dark: $blue;
+$btn-font-family: 'Source Sans Pro Semibold', sans-serif;
+
+$custom-control-indicator-checked-bg: $light-green;
+$custom-control-indicator-active-bg: $custom-control-indicator-checked-bg;
+$custom-control-indicator-border-color: $gray-300;
+$custom-control-indicator-focus-border-color: $custom-control-indicator-border-color;
+
+$card-spacer-x: 0;
+$card-spacer-y: 0;
+$card-shadow: 0px 20px 25px #0000001a;
+
+$enable-validation-icons: false;
+$form-feedback-margin-top: 0;
+
+$pagination-line-height: 30px;
+$pagination-border-width: 0;
+$pagination-active-color: $body-color;
+$pagination-disabled-color: $white-blue;
+$pagination-active-bg: $gray-200;
+$pagination-hover-bg: $gray-200;
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';

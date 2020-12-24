@@ -1,29 +1,30 @@
 <template>
-	<div class="menu">
+	<div class="menu" :class="$mq">
 		<SearchBar />
-		<AddButton />
+		<AddTool />
 	</div>
 </template>
 
 <script>
 import SearchBar from '@/components/SearchBar'
-import AddButton from '@/components/AddButton'
+import AddTool from '@/components/AddTool'
 
 export default {
-	components: { SearchBar, AddButton },
+	components: { SearchBar, AddTool },
 }
 </script>
 
-<style>
+<style lang="scss">
 .menu {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin-top: 40px;
-}
-@media (max-width: 576px) {
-	.menu {
-		margin-top: 20px;
+	width: 100%;
+	margin-top: 30px;
+	&.md,
+	&.sm,
+	&.xs {
+		margin-top: 25px;
 	}
 }
 </style>

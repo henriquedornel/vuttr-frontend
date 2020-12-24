@@ -1,12 +1,13 @@
 <template>
-	<div class="search-bar">
-		<div class="search-input">
-			<img src="@/assets/icon-search.svg" alt="" />
-			<input type="text" v-model="search" placeholder="search" />
+	<div class="search-bar" :class="$mq">
+		<div class="search-input" :class="$mq">
+			<img src="@/assets/icons/search.svg" alt="" />
+			<input type="text" v-model="search" placeholder="search" :class="$mq" />
 		</div>
-		<div class="search-checkbox">
-			<input type="checkbox" v-model="tags" value="search-tags" />
-			<label for="search-tags">search in tags only</label>
+		<div class="search-checkbox" :class="$mq">
+			<b-form-checkbox v-model="tags" name="search-tags" switch>
+				Search in tags only
+			</b-form-checkbox>
 		</div>
 	</div>
 </template>
@@ -22,18 +23,28 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '@/styles/custom.scss';
+
 .search-bar {
 	display: flex;
 	flex-direction: row;
-	align-items: flex-start;
+	align-items: center;
+	&.sm,
+	&.xs {
+		flex-direction: column;
+	}
 }
 .search-input {
 	display: flex;
 	flex-direction: row;
-	background: #f5f4f6;
-	border: 1px solid #ebeaed;
+	background: $gray-100;
+	border: 1px solid $gray-200;
 	border-radius: 5px;
+	&.sm,
+	&.xs {
+		margin-bottom: 5px;
+	}
 }
 .search-input img {
 	width: 25px;
@@ -41,48 +52,37 @@ export default {
 }
 .search-input input {
 	width: 180px;
-	font-family: "Source Sans Pro", sans-serif;
+	height: 25px;
 	font-size: 16px;
 	background: none;
 	border: none;
 	outline: none;
-}
-.search-input input::placeholder {
-	color: #b1adb9;
-}
-.search-checkbox {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-.search-checkbox input {
-	margin: 0 5px 5px 10px;
-	opacity: 0.6;
-}
-.search-checkbox input:checked {
-	opacity: 1;
-}
-.search-checkbox label {
-	font-size: 16px;
-}
-@media (max-width: 576px) {
-	.search-input input {
+	&:focus {
+		background: none;
+	}
+	&::placeholder {
+		color: $gray-400;
+	}
+	&.md,
+	&.sm,
+	&.xs {
 		width: 140px;
 		font-size: 14px;
 	}
-	.search-checkbox label {
-		font-size: 14px;
-	}
 }
-@media (max-width: 460px) {
-	.search-bar {
-		flex-direction: column;
+.search-checkbox {
+	margin-left: 10px;
+	&.sm,
+	&.xs {
+		margin-left: -15px;
 	}
-	.search-input {
-		margin-bottom: 5px;
+	label {
+		font-size: 16px;
 	}
-	.search-checkbox input {
-		margin-left: 5px;
+	&.md label,
+	&.sm label,
+	&.xs label {
+		font-size: 15px;
 	}
 }
 </style>

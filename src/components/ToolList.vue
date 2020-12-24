@@ -21,6 +21,7 @@ export default {
 				{
 					id: 1,
 					name: 'Notion',
+					link: "https://notion.so",
 					description: 'All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized.',
 					tags: ['organization', 'planning', 'collaboration', 'writing', 'calendar']
 				},
@@ -42,7 +43,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .tool-list ul {
 	padding: 0;
 	list-style-type: none;
