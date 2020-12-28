@@ -36,7 +36,7 @@ export default {
 			name: {
 				name: 'name',
 				type: 'input',
-				maxlength: 14,
+				maxlength: '50',
 				required: true,
 				value: '',
 				state: null,
@@ -44,7 +44,7 @@ export default {
 			link: {
 				name: 'link',
 				type: 'input',
-				maxlength: 255,
+				maxlength: '255',
 				required: true,
 				value: '',
 				state: null,
@@ -52,7 +52,7 @@ export default {
 			description: {
 				name: 'description',
 				type: 'text',
-				maxlength: 700,
+				maxlength: '700',
 				required: true,
 				value: '',
 				state: null,
@@ -60,7 +60,7 @@ export default {
 			tags: {
 				name: 'tags',
 				type: 'input',
-				maxlength: 140,
+				maxlength: '140',
 				required: true,
 				value: '',
 				state: null,

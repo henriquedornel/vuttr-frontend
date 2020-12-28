@@ -79,6 +79,10 @@ export default {
 .tool-card button {
 	padding: 15px 20px 0 0;
 }
+.tool-actions {
+	display: flex;
+	flex-direction: row;
+}
 .tool-card img {
 	&.md,
 	&.sm,
