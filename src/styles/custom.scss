@@ -46,15 +46,17 @@ $custom-control-indicator-focus-border-color: $custom-control-indicator-border-c
 
 $card-spacer-x: 0;
 $card-spacer-y: 0;
-$card-shadow: 0px 20px 25px #0000001a;
+$card-shadow: 0 10px 10px #0000000D;
 
 $enable-validation-icons: false;
 $form-feedback-margin-top: 0;
 
 $pagination-line-height: 30px;
 $pagination-border-width: 0;
+$pagination-bg: transparent;
 $pagination-active-color: $body-color;
 $pagination-disabled-color: $white-blue;
+$pagination-disabled-bg: transparent;
 $pagination-active-bg: $gray-200;
 $pagination-hover-bg: $gray-200;
 

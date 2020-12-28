@@ -7,11 +7,16 @@
 						{{ tool.name }}
 					</a>
 				</h1>
-				<b-button variant="link" v-b-modal="`delete-tool-modal-${tool.id}`">
-					<img src="@/assets/icons/close.svg" alt="" :class="$mq" />
-				</b-button>
+				<div class="tool-actions">
+					<b-button variant="link" v-b-modal="`edit-tool-modal-${tool.id}`">
+						<img class="tool-edit" src="@/assets/icons/edit.svg" alt="" :class="$mq" />
+					</b-button>
+					<b-button variant="link" v-b-modal="`delete-tool-modal-${tool.id}`">
+						<img class="tool-close" src="@/assets/icons/close.svg" alt="" :class="$mq" />
+					</b-button>
+				</div>				
 			</template>
-			<b-card-text v-b-modal="`edit-tool-modal-${tool.id}`">
+			<b-card-text>
 				<p class="tool-description" :class="$mq">
 					{{ tool.description }}
 				</p>
@@ -58,9 +63,13 @@ export default {
 	font-size: 26px;
 	padding: 15px 0 0 20px;
 	&.md,
-	&.sm,
-	&.xs {
+	&.sm {
+		padding-top: 12px;
 		font-size: 20px;
+	}
+	&.xs {
+		padding-top: 15px;
+		font-size: 16px;
 	}
 }
 .tool-card a,
@@ -71,12 +80,17 @@ export default {
 	padding: 15px 20px 0 0;
 }
 .tool-card img {
-	width: 15px;
 	&.md,
 	&.sm,
 	&.xs {
-		width: 13px;
+		vertical-align: top;
 	}
+}
+.tool-edit {
+	width: 18px;
+}
+.tool-close {
+	width: 15px;
 }
 .tool-card .card-text {
 	outline: 0;
@@ -85,10 +99,13 @@ export default {
 	padding: 20px 20px 10px 20px;
 	font-size: 18px;
 	&.md,
-	&.sm,
-	&.xs {
+	&.sm {
 		padding: 15px 20px 0 20px;
 		font-size: 16px;
+	}
+	&.xs {
+		padding: 15px 20px 0 20px;
+		font-size: 14px;
 	}
 }
 .tool-card .tool-tags {

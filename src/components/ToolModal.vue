@@ -1,5 +1,5 @@
 <template>
-	<b-modal :id="id" ref="modal" @show="resetModal" @hidden="resetModal" @ok="handleOk">
+	<b-modal :id="id" ref="modal" centered @show="resetModal" @hidden="resetModal" @ok="handleOk">
 		<template #modal-header="{ close }">
 			<h1 class="modal-title" :class="$mq">{{ title }}</h1>
 			<button type="button" class="close" @click="close()">×</button>
@@ -36,6 +36,7 @@ export default {
 			name: {
 				name: 'name',
 				type: 'input',
+				maxlength: 14,
 				required: true,
 				value: '',
 				state: null,
@@ -43,6 +44,7 @@ export default {
 			link: {
 				name: 'link',
 				type: 'input',
+				maxlength: 255,
 				required: true,
 				value: '',
 				state: null,
@@ -50,6 +52,7 @@ export default {
 			description: {
 				name: 'description',
 				type: 'text',
+				maxlength: 700,
 				required: true,
 				value: '',
 				state: null,
@@ -57,6 +60,7 @@ export default {
 			tags: {
 				name: 'tags',
 				type: 'input',
+				maxlength: 140,
 				required: true,
 				value: '',
 				state: null,

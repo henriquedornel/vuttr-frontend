@@ -33,6 +33,7 @@ export default {
 	&.sm,
 	&.xs {
 		flex-direction: column;
+		align-items: flex-start;
 	}
 }
 .search-input {
@@ -64,9 +65,12 @@ export default {
 		color: $gray-400;
 	}
 	&.md,
-	&.sm,
 	&.xs {
 		width: 140px;
+		font-size: 14px;
+	}
+	&.sm {
+		width: 180px;
 		font-size: 14px;
 	}
 }
@@ -74,7 +78,7 @@ export default {
 	margin-left: 10px;
 	&.sm,
 	&.xs {
-		margin-left: -15px;
+		margin-left: 0;
 	}
 	label {
 		font-size: 16px;

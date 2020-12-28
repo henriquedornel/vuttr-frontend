@@ -2,11 +2,11 @@
 	<b-form-group class="form-field" :label="field.name" :label-for="fieldInput" :class="$mq"
         :state="field.state" :invalid-feedback="invalidFeedback">
 		<b-form-input v-if="field.type === 'input'" :id="fieldInput" :title="title"
-            v-model="field.value" :state="field.state"
+            v-model="field.value" :state="field.state" :maxlength="field.maxlength"
 			autocomplete="off" :required="field.required">
 		</b-form-input>        
 		<b-form-textarea v-else id="fieldInput" :title="title"
-            v-model="field.value" :state="field.state"
+            v-model="field.value" :state="field.state" :maxlength="field.maxlength"
             rows="3" no-resize :required="field.required">
 		</b-form-textarea>
 	</b-form-group>

@@ -28,7 +28,7 @@ export default {
 	padding: 8px;
 	&.md,
 	&.sm {
-		width: 70px;
+		width: 75px;
 	}
 	&.xs {
 		width: 50px;
