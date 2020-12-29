@@ -13,6 +13,7 @@ $gray-100: #f5f4f6;
 $gray-200: #ebeaed;
 $gray-300: #dedce1;
 $gray-400: #b1adb9;
+$gray-500: #8f8f9b;
 
 $font-family-base: 'Source Sans Pro', sans-serif;
 $headings-font-family: 'Source Sans Pro Semibold', sans-serif;
@@ -50,6 +51,16 @@ $card-shadow: 0 10px 10px #0000000D;
 
 $enable-validation-icons: false;
 $form-feedback-margin-top: 0;
+
+$dropdown-border-color: $gray-200;
+$dropdown-box-shadow: 0 20px 25px #0000001A;
+$dropdown-link-color: $gray-500;
+$dropdown-link-hover-color: $blue;
+$dropdown-link-hover-bg: $light-blue;
+$dropdown-link-active-color: $blue;
+$dropdown-link-active-bg: $light-blue;
+$dropdown-item-padding-y: 0.65rem;
+$dropdown-divider-margin-y: 0;
 
 $pagination-line-height: 30px;
 $pagination-border-width: 0;

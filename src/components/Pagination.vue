@@ -1,6 +1,6 @@
 <template>
-	<b-pagination pills align="center" prev-text="Prev" next-text="Next" :class="$mq"
-		v-model="currentPage" :total-rows="rows" :per-page="perPage">
+	<b-pagination pills align="center" v-model="currentPage" :total-rows="rows" :per-page="perPage"
+		:prev-text="$mq | mq({'sm': 'Prev'})" :next-text="$mq | mq({'sm': 'Next'})" :class="$mq">
 	</b-pagination>
 </template>
 

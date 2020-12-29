@@ -7,14 +7,19 @@
 						{{ tool.name }}
 					</a>
 				</h1>
-				<div class="tool-actions">
-					<b-button variant="link" v-b-modal="`edit-tool-modal-${tool.id}`">
-						<img class="tool-edit" src="@/assets/icons/edit.svg" alt="" :class="$mq" />
-					</b-button>
-					<b-button variant="link" v-b-modal="`delete-tool-modal-${tool.id}`">
-						<img class="tool-close" src="@/assets/icons/close.svg" alt="" :class="$mq" />
-					</b-button>
-				</div>				
+				<b-dropdown variant="link" no-caret right>
+					<template #button-content>
+						<img src="@/assets/icons/menu.svg" alt="" />
+						<span class="sr-only">Actions</span>
+					</template>
+					<b-dropdown-item v-b-modal="`edit-tool-modal-${tool.id}`">
+						Edit
+					</b-dropdown-item>
+					<b-dropdown-divider></b-dropdown-divider>
+					<b-dropdown-item v-b-modal="`delete-tool-modal-${tool.id}`" variant="danger">
+						Remove
+					</b-dropdown-item>
+				</b-dropdown>		
 			</template>
 			<b-card-text>
 				<p class="tool-description" :class="$mq">
@@ -56,7 +61,7 @@ export default {
 .tool-card .card-header {
 	display: flex;
 	flex-direction: row;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: space-between;
 }
 .tool-card h1 {
@@ -72,29 +77,18 @@ export default {
 		font-size: 16px;
 	}
 }
-.tool-card a,
-.tool-card a:hover {
+.tool-card h1 a,
+.tool-card h1 a:hover {
 	color: $white;
 }
-.tool-card button {
-	padding: 15px 20px 0 0;
-}
-.tool-actions {
-	display: flex;
-	flex-direction: row;
-}
 .tool-card img {
-	&.md,
-	&.sm,
-	&.xs {
-		vertical-align: top;
-	}
-}
-.tool-edit {
-	width: 18px;
-}
-.tool-close {
 	width: 15px;
+}
+.tool-card .card-header button {
+	padding-right: 15px;
+}
+.tool-card .dropdown-menu {
+	box-shadow: $dropdown-box-shadow;
 }
 .tool-card .card-text {
 	outline: 0;
