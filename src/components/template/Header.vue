@@ -4,18 +4,24 @@
 			<router-link to="/">{{ title }}</router-link>
 		</h1>
 		<h2 :class="$mq">
-			<router-link to="/">{{ subtitle }}</router-link>
+			<router-link to="/">{{baseApiUrl}}</router-link>
 		</h2>
 		<hr>
 	</header>
 </template>
 
 <script>
+import { baseApiUrl } from '@/global'
 export default {
 	props: {
 		title: String,
 		subtitle: String
-	}
+	},
+	data() {
+		return {
+			baseApiUrl: baseApiUrl
+		}
+    }
 }
 </script>
 

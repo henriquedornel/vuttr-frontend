@@ -3,7 +3,7 @@
         <template #header>
             <h1 :class="$mq">
                 <a :href="tool.link" target="_blank">
-                    {{ tool.title }} {{baseApiUrl}}
+                    {{ tool.title }}
                 </a>
             </h1>
             <Actions :tool="tool" />		
@@ -20,19 +20,13 @@
 </template>
 
 <script>
-import { baseApiUrl } from '@/global'
 import Actions from '@/components/tools/Actions'
 import toolCrud from '@/mixins/toolCrud'
 
 export default {
 	components: { Actions },
 	mixins: [ toolCrud ],
-    props: [ 'tool' ],
-	data() {
-		return {
-			baseApiUrl: baseApiUrl
-		}
-    }
+    props: [ 'tool' ]
 }
 </script>
 
