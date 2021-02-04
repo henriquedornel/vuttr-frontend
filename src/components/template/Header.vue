@@ -4,7 +4,7 @@
 			<router-link to="/">{{ title }}</router-link>
 		</h1>
 		<h2 :class="$mq">
-			<router-link to="/">{{baseApiUrl}}</router-link>
+			<router-link to="/">{{ subtitle }}</router-link>
 		</h2>
 		<hr>
 	</header>
@@ -15,12 +15,7 @@ export default {
 	props: {
 		title: String,
 		subtitle: String
-	},
-	data() {
-		return {
-			baseApiUrl: process.env.VUE_APP_BASE_API_URL
-		}
-    }
+	}
 }
 </script>
 
