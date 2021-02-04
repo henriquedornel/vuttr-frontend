@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-export const baseApiUrl = 'https://hds-vuttr-backend.herokuapp.com/tools'
+export const baseApiUrl = 'https://hds-vuttr-backend.herokuapp.com'
 
 export function showError(e) {
     if(e && e.response && e.response.data) {
