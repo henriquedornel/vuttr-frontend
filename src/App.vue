@@ -1,18 +1,16 @@
 <template>
 	<div id="app" :class="$mq">
 		<Header title="VUTTR" subtitle="Very Useful Tools to Remember" />
-		<Menu />
-		<ToolList />
+		<Content />
 	</div>
 </template>
 
 <script>
-import Header from '@/components/Header'
-import Menu from '@/components/Menu'
-import ToolList from '@/components/ToolList'
+import Header from '@/components/template/Header'
+import Content from '@/components/template/Content'
 
 export default {
-	components: { Header, Menu, ToolList }
+	components: { Header, Content }
 }
 </script>
 
@@ -21,7 +19,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: stretch;
 	max-width: 890px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;

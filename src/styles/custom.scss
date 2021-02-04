@@ -1,4 +1,4 @@
-$body-color: #170C3A;
+$body-color: #170c3a;
 $white: #fff;
 $blue: #365df0;
 $light-blue: #e1e7fd;
@@ -6,6 +6,7 @@ $white-blue: #b9c6fa;
 $green: #0dcb7d;
 $light-green: #12db89;
 $cyan: #2497b2;
+$purple: #9aaef7;
 $red: #f95e5a;
 $light-red: #feefee;
 
@@ -51,6 +52,7 @@ $card-shadow: 0 10px 10px #0000000D;
 
 $enable-validation-icons: false;
 $form-feedback-margin-top: 0;
+$form-feedback-valid-color: $input-border-color;
 
 $dropdown-border-color: $gray-200;
 $dropdown-box-shadow: 0 20px 25px #0000001A;
@@ -61,15 +63,6 @@ $dropdown-link-active-color: $blue;
 $dropdown-link-active-bg: $light-blue;
 $dropdown-item-padding-y: 0.65rem;
 $dropdown-divider-margin-y: 0;
-
-$pagination-line-height: 30px;
-$pagination-border-width: 0;
-$pagination-bg: transparent;
-$pagination-active-color: $body-color;
-$pagination-disabled-color: $white-blue;
-$pagination-disabled-bg: transparent;
-$pagination-active-bg: $gray-200;
-$pagination-hover-bg: $gray-200;
 
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootstrap-vue/src/index.scss';

@@ -1,27 +1,16 @@
 <template>
-	<div class="search-bar" :class="$mq">
-		<div class="search-input" :class="$mq">
-			<img src="@/assets/icons/search.svg" alt="" />
-			<input type="text" v-model="search" placeholder="search" :class="$mq" />
-		</div>
-		<div class="search-checkbox" :class="$mq">
-			<b-form-checkbox v-model="tags" name="search-tags" switch>
-				Search in tags only
-			</b-form-checkbox>
-		</div>
-	</div>
+    <div class="search-bar" :class="$mq">
+        <div class="search-input" :class="$mq">
+            <img src="@/assets/icons/search.svg" alt="" />
+            <input type="text" placeholder="search" :class="$mq" /> <!-- v-model="search" -->
+        </div>
+        <div class="search-checkbox" :class="$mq">
+            <b-form-checkbox name="search-tags" switch> <!-- v-model="tags" -->
+                Search in tags only
+            </b-form-checkbox>
+        </div>
+    </div>
 </template>
-
-<script>
-export default {
-	data: () => {
-		return {
-			search: '',
-			tags: false
-		}
-	}
-}
-</script>
 
 <style lang="scss">
 @import '@/styles/custom.scss';

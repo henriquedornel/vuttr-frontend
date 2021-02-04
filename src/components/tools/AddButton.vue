@@ -1,22 +1,13 @@
-<template>
-	<div class="add-tool">
-		<b-button variant="success" :class="$mq" v-b-modal.add-tool-modal>
-			<img src="@/assets/icons/add.svg" alt="" />
-			<span :class="$mq">
-				Add
-			</span>
-		</b-button>
-		<ToolModal id="add-tool-modal" title="Add new tool"/>
-	</div>
+<template>    
+    <div class="add-tool">
+        <b-button variant="success" :class="$mq" v-b-modal.form-modal>
+            <img src="@/assets/icons/add.svg" alt="" />
+            <span :class="$mq">
+                Add
+            </span>
+        </b-button>
+    </div>
 </template>
-
-<script>
-import ToolModal from '@/components/ToolModal'
-
-export default {
-	components: { ToolModal }
-}
-</script>
 
 <style lang="scss">
 .add-tool button {

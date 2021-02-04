@@ -8,12 +8,12 @@ Vue.use(Toasted, {
 
 Vue.toasted.register(
     'defaultSuccess',
-    payload => !payload.msg ? 'Operação realidada com sucesso!' : payload.msg,
+    payload => !payload.msg ? 'The tool has been saved successfully' : payload.msg, //o payload vai ter uma mensagem, que pode estar setada ou não
     { type: 'success', icon: 'check' }
 )
 
 Vue.toasted.register(
     'defaultError',
-    payload => !payload.msg ? 'Erro inesperado!' : payload.msg,
+    payload => !payload.msg ? 'Internal error' : payload.msg,
     { type : 'error', icon : 'times' }
 )

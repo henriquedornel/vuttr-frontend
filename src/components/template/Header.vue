@@ -1,11 +1,12 @@
 <template>
-	<header class='header' :class="$mq">
+	<header class="header" :class="$mq">
 		<h1 :class="$mq">
-			{{ title }}
+			<router-link to="/">{{ title }}</router-link>
 		</h1>
 		<h2 :class="$mq">
-			{{ subtitle }}
+			<router-link to="/">{{ subtitle }}</router-link>
 		</h2>
+		<hr>
 	</header>
 </template>
 
@@ -19,13 +20,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/custom.scss";
+
 .header {
-	width: 100%;
-	margin-top: 60px;
+	margin: 60px 0 10px 0;
 	&.md,
 	&.sm,
 	&.xs {
-		margin-top: 25px;
+		margin: 25px 0 0 0;
 	}
 }
 .header h1 {
@@ -45,5 +47,10 @@ export default {
 	&.xs {
 		font-size: 16px;
 	}
+}
+.header a,
+.header a:hover {
+    color: $body-color;
+    text-decoration: none;
 }
 </style>
