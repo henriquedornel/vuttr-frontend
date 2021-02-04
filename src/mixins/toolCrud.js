@@ -1,4 +1,4 @@
-import { baseApiUrl, showError } from '@/global'
+import { showError } from '@/global'
 import axios from 'axios'
 
 export default {
@@ -19,7 +19,7 @@ export default {
             let tools = this.$store.state.tools
             const page = this.$store.state.page
             const limit = this.$store.state.limit
-            const url = `${baseApiUrl}/tools?page=${page}&limit=${limit}`
+            const url = `${process.env.VUE_APP_BASE_API_URL}/tools?page=${page}&limit=${limit}`
             axios.get(url).then(res => {
                 if(res.data) {
                     tools = [...tools, ...res.data]
@@ -32,7 +32,7 @@ export default {
         loadTools() {
             const currentPage = this.$store.state.page
             const limit = (currentPage - 1) * this.$store.state.limit
-            const url = `${baseApiUrl}/tools?page=1&limit=${limit}`
+            const url = `${process.env.VUE_APP_BASE_API_URL}/tools?page=1&limit=${limit}`
             axios.get(url).then(res => {
                 if(res.data) {
                     this.$store.commit('mutate', { prop: 'tools', with: res.data })
@@ -60,7 +60,7 @@ export default {
             tool.link = tool.link ? tool.link.trim() : '',
             tool.description = tool.description ? tool.description.trim() : '',
             tool.tags = this.tagsArray(tool.tags)
-            axios[method](`${baseApiUrl}/tools${id}`, tool)
+            axios[method](`${process.env.VUE_APP_BASE_API_URL}/tools${id}`, tool)
                 .then(() => {
                     this.$toasted.global.defaultSuccess({
                         msg: `The tool ${tool.title} has been ${operation} successfully`
@@ -71,7 +71,7 @@ export default {
         },
         remove() {
             const id = this.tool.id
-            axios.delete(`${baseApiUrl}/tools/${id}`)
+            axios.delete(`${process.env.VUE_APP_BASE_API_URL}/tools/${id}`)
                 .then(() => {
                     this.$toasted.global.defaultSuccess({
                         msg: `The tool ${this.tool.title} has been removed successfully`
@@ -80,7 +80,7 @@ export default {
                 .catch(showError)
         },
         setToolsCount() {
-            const url = `${baseApiUrl}/tools`
+            const url = `${process.env.VUE_APP_BASE_API_URL}/tools`
             axios.get(url).then(res => {
                 res.data && this.$store.commit('mutate', { prop: 'count', with: res.data.length })
             })

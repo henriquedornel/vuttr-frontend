@@ -1,7 +1,5 @@
 import Vue from 'vue'
 
-export const baseApiUrl = process.env.VUE_APP_BASE_API_URL || 'http://localhost:3000'
-
 export function showError(e) {
     if(e && e.response && e.response.data) {
         if(typeof e.response.data === 'object')

@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { baseApiUrl } from '@/global'
 export default {
 	props: {
 		title: String,
@@ -19,7 +18,7 @@ export default {
 	},
 	data() {
 		return {
-			baseApiUrl: baseApiUrl
+			baseApiUrl: process.env.VUE_APP_BASE_API_URL
 		}
     }
 }
