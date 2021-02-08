@@ -17,9 +17,13 @@ export default {
         },
         getToolsLoader() {
             let tools = this.$store.state.tools
+            const baseApiUrl = process.env.VUE_APP_BASE_API_URL
+            const search = this.$store.state.search
+            const tagsOnly = this.$store.state.tagsOnly
             const page = this.$store.state.page
             const limit = this.$store.state.limit
-            const url = `${process.env.VUE_APP_BASE_API_URL}/tools?page=${page}&limit=${limit}`
+            let url = `${baseApiUrl}/tools?page=${page}&limit=${limit}`
+            url += tagsOnly ? `&tag=${search}` : `&search=${search}`
             axios.get(url).then(res => {
                 if(res.data) {
                     tools = [...tools, ...res.data]
@@ -30,10 +34,14 @@ export default {
             })
         },
         loadTools() {
+            const baseApiUrl = process.env.VUE_APP_BASE_API_URL
+            const search = this.$store.state.search
+            const tagsOnly = this.$store.state.tagsOnly
             const currentPage = this.$store.state.page
             const limit = (currentPage - 1) * this.$store.state.limit
-            const url = `${process.env.VUE_APP_BASE_API_URL}/tools?page=1&limit=${limit}`
-            axios.get(url).then(res => {
+            let url = `${baseApiUrl}/tools?page=1&limit=${limit}`
+            url += tagsOnly ? `&tag=${search}` : `&search=${search}`
+			axios.get(url).then(res => {
                 if(res.data) {
                     this.$store.commit('mutate', { prop: 'tools', with: res.data })
                     this.setToolsCount()
@@ -80,7 +88,11 @@ export default {
                 .catch(showError)
         },
         setToolsCount() {
-            const url = `${process.env.VUE_APP_BASE_API_URL}/tools`
+            const baseApiUrl = process.env.VUE_APP_BASE_API_URL
+            const search = this.$store.state.search
+            const tagsOnly = this.$store.state.tagsOnly
+            let url = `${baseApiUrl}/tools?limit=`
+            url += tagsOnly ? `&tag=${search}` : `&search=${search}`
             axios.get(url).then(res => {
                 res.data && this.$store.commit('mutate', { prop: 'count', with: res.data.length })
             })

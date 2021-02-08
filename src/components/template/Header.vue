@@ -23,7 +23,7 @@ export default {
 @import "@/styles/custom.scss";
 
 .header {
-	margin: 60px 0 10px 0;
+	margin: 50px 0 10px 0;
 	&.md,
 	&.sm,
 	&.xs {

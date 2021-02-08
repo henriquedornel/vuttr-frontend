@@ -3,9 +3,14 @@
 		<AddFirst v-if="addFirst" />
 		<div v-else>
 			<Menu />
-			<List :tools="tools" />
-			<DeleteModal />
-			<scroll-loader :loader-method="getToolsLoader" :loader-disable="loaderDisable" />
+			<p v-if="emptyResult" class="emptyResult">
+				No tools were found with these keywords
+			</p>
+			<div v-else>
+				<List :tools="tools" />
+				<DeleteModal />
+				<scroll-loader :loader-method="getToolsLoader" :loader-disable="loaderDisable" />
+			</div>			
 		</div>
 		<FormModal />
 	</div>
@@ -25,7 +30,8 @@ export default {
 	mixins: [ toolCrud ],
 	data() {
 		return {
-			addFirst: false
+			addFirst: false,
+			emptyResult: false
 		}
 	},
 	computed: {
@@ -45,7 +51,8 @@ export default {
 	},
 	watch: {
 		tools(array) {
-			this.addFirst = array.length === 0
+			this.addFirst = array.length === 0 && this.$store.state.search === ''
+			this.emptyResult = array.length === 0 && this.$store.state.search !== ''
 		}
 	}
 }
@@ -56,5 +63,9 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
+}
+.emptyResult {
+	padding-top: 50px;
+	font-style: italic;
 }
 </style>

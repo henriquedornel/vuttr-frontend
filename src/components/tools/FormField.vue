@@ -5,6 +5,7 @@
             :id="fieldId" :placeholder="placeholder"
             v-model="tool[fieldName]" :maxlength="maxlength"
             autocomplete="off" :required="required"
+            autocorrect="off" autocapitalize="none"
             :state="state"  />
         <b-form-textarea v-else-if="type === 'text'"
             :id="fieldId" :placeholder="placeholder"
