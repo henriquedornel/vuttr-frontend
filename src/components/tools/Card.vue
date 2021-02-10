@@ -21,11 +21,11 @@
 
 <script>
 import Actions from '@/components/tools/Actions'
-import toolCrud from '@/mixins/toolCrud'
+import tools from '@/mixins/tools'
 
 export default {
 	components: { Actions },
-	mixins: [ toolCrud ],
+	mixins: [ tools ],
     props: [ 'tool' ]
 }
 </script>

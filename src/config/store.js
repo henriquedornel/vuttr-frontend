@@ -10,6 +10,7 @@ export default new Vuex.Store({
         tools: [],
         search: '',
         tagsOnly: false,
+        searchSpinner: false,
         count: 0,
         page: 1,
         limit: 3

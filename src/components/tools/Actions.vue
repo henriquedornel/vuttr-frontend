@@ -15,11 +15,23 @@
 </template>
 
 <script>
-import toolCrud from '@/mixins/toolCrud'
+import tools from '@/mixins/tools'
 
 export default {
-	mixins: [toolCrud],
-    props: [ 'tool' ]
+	mixins: [tools],
+    props: [ 'tool' ],
+    methods: {        
+		loadTool(tool) {
+            this.$store.commit('mutate', { prop: 'modalTitle', with: 'Edit tool' })
+            this.$store.commit('mutate', { prop: 'tool', with: {
+				id: tool.id,
+				title: tool.title,
+				link: tool.link,
+                description: tool.description,
+                tags: this.tagsList(tool.tags)
+			}})
+        },
+    }
 }
 </script>
 

@@ -2,8 +2,9 @@
     <div class="search-bar" :class="$mq">
         <div class="search-input" :class="$mq">
             <img src="@/assets/icons/search.svg" alt="" />
-            <input type="search" placeholder="search" v-model="search" :class="$mq"
-				autocorrect="off" autocapitalize="none" />
+            <input type="search" placeholder="search" :value="search"
+				@input="e => search = e.target.value"
+				:class="$mq" autocorrect="off" autocapitalize="none" />
         </div>
         <div class="search-checkbox" :class="$mq">
             <b-form-checkbox name="search-tags" switch size="lg" v-model="tagsOnly">
@@ -14,10 +15,10 @@
 </template>
 
 <script>
-import toolCrud from '@/mixins/toolCrud'
+import tools from '@/mixins/tools'
 
 export default {
-    mixins: [ toolCrud ],
+    mixins: [ tools ],
 	data() {
 		return {
 			search: '',
@@ -26,6 +27,7 @@ export default {
 	},
 	methods: {
 		searchTools() {
+			this.$store.commit('mutate', { prop: 'searchSpinner', with: true })
 			this.$store.commit('mutate', { prop: 'search', with: this.search })
 			this.$store.commit('mutate', { prop: 'tagsOnly', with: this.tagsOnly })
 			this.loadTools()

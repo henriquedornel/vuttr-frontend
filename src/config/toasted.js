@@ -14,6 +14,6 @@ Vue.toasted.register(
 
 Vue.toasted.register(
     'defaultError',
-    payload => !payload.msg ? 'Internal error' : payload.msg,
+    payload => !payload.msg ? 'Internal error: cannot connect to API' : payload.msg,
     { type : 'error', icon : 'times' }
 )
