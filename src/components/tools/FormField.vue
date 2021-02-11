@@ -1,49 +1,42 @@
 <template>
     <b-form-group class="form-field" :label="label" :label-for="fieldId"
         :class="$mq" :invalid-feedback="invalidFeedback">
-        <b-form-input v-if="type === 'input'"
+        <b-form-input v-if="field.type === 'input'"
             :id="fieldId" :placeholder="placeholder"
-            v-model="tool[fieldName]" :maxlength="maxlength"
-            autocomplete="off" :required="required"
+            v-model="tool[field.key]" :maxlength="field.maxlength"
+            autocomplete="off" :required="field.required"
             autocorrect="off" autocapitalize="none"
-            :state="state"  />
-        <b-form-textarea v-else-if="type === 'text'"
+            :state="field.state"  />
+        <b-form-textarea v-else-if="field.type === 'text'"
             :id="fieldId" :placeholder="placeholder"
-            v-model="tool[fieldName]" :maxlength="maxlength"
-            rows="3" no-resize :required="required"
-            :state="state"  />
+            v-model="tool[field.key]" :maxlength="field.maxlength"
+            rows="3" no-resize :required="field.required"
+            :state="field.state"  />
     </b-form-group>
 </template>
 
 <script>
 export default {
-    props: {
-        fieldName: String,
-        type: String,
-        caption: String,
-        maxlength: Number,
-        required: Boolean,
-        state: Boolean
-    },
+    props: [ 'field' ],
     computed: {        
         tool() {
             return this.$store.state.tool
         },
         fieldId() {
-            return `tool-${this.fieldName}`
+            return `tool-${this.field.key}`
         },
         label() {
-            let label = `${this.caption}`
-            if(this.required) {
+            let label = `${this.field.caption}`
+            if(this.field.required) {
                 label += ' *';
             }
             return label
         },
         placeholder() {
-            return `Enter ${this.caption}...`
+            return `Enter ${this.field.caption}...`
         },
         invalidFeedback() {
-            return `Field "${this.caption}" is required`
+            return this.field.validationMsg || `Field "${this.field.caption}" is required`
         }
     }
 }

@@ -6,9 +6,7 @@
         </template>
         <form ref="form">
             <input id="tool-id" type="hidden" v-model="tool.id" />
-            <FormField v-for="field in fields" :key="field.key" :fieldName="field.key" :type="field.type"
-                :caption="field.caption" :maxlength="field.maxlength" :required="field.required"
-                :state="field.state" />
+            <FormField v-for="field in fields" :key="field.key" :field="field" />
         </form>
         <template #modal-footer="{ ok, cancel }">
             <b-button variant="secondary" class="modal-button" @click="cancel()" :class="$mq"
@@ -57,6 +55,7 @@ export default {
                 field.state = true
             })
         },
+        
         checkFormValidity() { 
             let valid = true
             this.fields.forEach(field => {
@@ -65,7 +64,7 @@ export default {
                     if(!field.state) {
                         valid = false
                     }
-                }                
+                }
             })
             return valid
         },
@@ -77,6 +76,37 @@ export default {
             }
             return true
         },
+
+        removeSpaces(value, replace = '') {
+            if(!value) return ''
+            return value
+                .replace(/\s+/g, replace)
+                .trim()
+        },
+        removeExtraSpaces(value) {
+            return this.removeSpaces(value, ' ')
+        },
+        handleUrl(value) {
+            value = this.removeSpaces(value)
+            if(value.substring(0, 7) !== 'http://' && value.substring(0, 8) !== 'https://') {
+                value = 'http://' + value
+            }
+            return value
+        },
+        tagsArray(tagsList) {
+            if(!tagsList || tagsList.trim() === '')  return []
+            
+            const tagsArray = tagsList
+                .toLowerCase()
+                .replace(/[#,;]/g, ' ') //substitui hashtag, vírgula e ponto e vírgula por um espaço em branco
+                .replace(/[^a-zA-Z0-9\s]/g, '') //remove tudo que não for caracter, dígito ou espaço em branco
+                .replace(/\s+/g, ' ') //substitui qualquer sequência de espaços em branco, tabulação ou quebra de linha por um espaço em branco simples
+                .trim()
+                .split(' ') //converte em um array
+            
+            return tagsArray[0] === '' ? [] : tagsArray
+        },
+
         handleSubmit(bvModalEvt) {
             bvModalEvt.preventDefault() //prevent modal from closing          
             if(!this.checkFormValidity()) { //exit when the form isn't valid
@@ -90,10 +120,12 @@ export default {
             const operation = this.tool.id ? 'updated' : 'added'
             const id = this.tool.id ? `/${this.tool.id}` : ''
             const tool = { ...this.tool }
-            tool.title = tool.title ? tool.title.trim() : '',
-            tool.link = tool.link ? tool.link.trim() : '',
-            tool.description = tool.description ? tool.description.trim() : '',
+
+            tool.title = this.removeExtraSpaces(tool.title),
+            tool.link = this.handleUrl(tool.link),
+            tool.description = this.removeExtraSpaces(tool.description),
             tool.tags = this.tagsArray(tool.tags)
+
             axios[method](`${process.env.VUE_APP_BASE_API_URL}/tools${id}`, tool)
                 .then(() => {
                     this.$toasted.global.defaultSuccess({

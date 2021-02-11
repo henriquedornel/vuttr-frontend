@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 export default {
-	methods: {        
+	methods: {
         showError(e) {
             if(e && e.response && e.response.data) {
                 if(typeof e.response.data === 'object')

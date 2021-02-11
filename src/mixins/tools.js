@@ -39,18 +39,7 @@ export default {
                 res.data && this.$store.commit('mutate', { prop: 'count', with: res.data.length })
             })
         },
-        tagsArray: (tagsList) => {
-            if(!tagsList || tagsList.trim() === '') {
-                return []
-            }
-            return tagsList.toLowerCase()
-                .replace(/[#,;]/g, ' ') //substitui hashtag, vírgula e ponto e vírgula por um espaço em branco
-                .replace(/[^a-zA-Z0-9\s]/g, '') //remove tudo que não for caracter, dígito ou espaço em branco
-                .replace(/\s+/g, ' ') //substitui qualquer sequência de espaços em branco, tabulação ou quebra de linha por um espaço em branco simples
-                .trim()
-                .split(' ') //converte em um array
-        },
-        tagsList: (tagsArray) => {
+        tagsList(tagsArray) {
             return tagsArray.map((tag) => `#${tag}`).join(" ")
         }
     }
