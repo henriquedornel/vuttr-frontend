@@ -1,0 +1,10 @@
+{
+    "app": {
+        "appTitle": "Very Useful Tools to Remember",
+        "pageTitle": "VUTTR | Very Useful Tools to Remember"
+    },
+    "main": {
+        "company": "Test",
+        "welcome": "Hello {name}!"
+    }
+}

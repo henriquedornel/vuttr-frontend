@@ -13,7 +13,7 @@ import Card from '@/components/tools/Card'
 
 export default {
     components: { Card },
-    props: [ 'tools' ]
+	props: [ 'tools' ]
 }
 </script>
 

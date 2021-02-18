@@ -1,0 +1,10 @@
+{
+    "app": {
+        "appTitle": "Ferramentas muito úteis para se lembrar",
+        "pageTitle": "VUTTR | Ferramentas muito úteis para se lembrar"
+    },
+    "main": {
+        "company": "Teste",
+        "welcome": "Bem-vindo {name}!"
+    }
+}

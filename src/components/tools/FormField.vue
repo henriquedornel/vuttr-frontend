@@ -6,18 +6,21 @@
             v-model="tool[field.key]" :maxlength="field.maxlength"
             autocomplete="off" :required="field.required"
             autocorrect="off" autocapitalize="none"
-            :state="field.state"  />
+            :state="field.state" :disabled="disabled" />
         <b-form-textarea v-else-if="field.type === 'text'"
             :id="fieldId" :placeholder="placeholder"
             v-model="tool[field.key]" :maxlength="field.maxlength"
             rows="3" no-resize :required="field.required"
-            :state="field.state"  />
+            :state="field.state" :disabled="disabled" />
     </b-form-group>
 </template>
 
 <script>
 export default {
-    props: [ 'field' ],
+    props: {
+        field: Object,
+        disabled: Boolean
+    },
     computed: {        
         tool() {
             return this.$store.state.tool

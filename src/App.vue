@@ -1,16 +1,29 @@
 <template>
 	<div id="app" :class="$mq">
-		<Header title="VUTTR" subtitle="Very Useful Tools to Remember" />
+		<Title title="VUTTR" :subtitle="$t('app.appTitle')" />
 		<Content />
 	</div>
 </template>
 
 <script>
-import Header from '@/components/template/Header'
+import Title from '@/components/template/Title'
 import Content from '@/components/template/Content'
 
 export default {
-	components: { Header, Content }
+	components: { Title, Content },
+	mounted() {
+		this.$watch(
+			'$i18n.locale',
+			(newLocale, oldLocale) => {
+				if(newLocale === oldLocale) {
+					return
+				}
+				document.documentElement.lang = newLocale
+				document.title = this.$t('app.pageTitle')
+			},
+			{ immediate: true }
+		)
+	}
 }
 </script>
 

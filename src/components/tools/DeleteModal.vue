@@ -1,5 +1,5 @@
 <template>
-    <b-modal id="delete-modal" centered hide-header @hidden="hide" @ok="handleRemove">
+    <b-modal id="delete-modal" centered hide-header @hidden="resetTool" @ok="handleRemove">
 		<input id="tool-id" type="hidden" v-model="tool.id" />
 		<p class="delete-msg">
 			Are you sure you want to remove the tool <strong>{{ tool.title }}</strong>?
@@ -11,10 +11,7 @@
 			</b-button>
 			<b-button variant="danger" class="modal-button" @click="ok()"
                 :disabled="buttonSpinner">
-				<div v-if="buttonSpinner">
-                    <b-spinner small></b-spinner>
-                    <span class="sr-only">Removing...</span>
-                </div>
+                <Spinner v-if="buttonSpinner" caption="Removing" size="small" />
                 <span v-else>Yes</span>
 			</b-button>
 		</template>
@@ -22,16 +19,17 @@
 </template>
 
 <script>
+import Spinner from '@/components/tools/Spinner'
+
 import axios from 'axios'
 import tools from '@/mixins/tools'
 
 export default {
+    components: { Spinner },
     mixins: [ tools ],
-	data() {
-		return {
-            buttonSpinner: false
-		}
-    },
+    data: () => ({
+        buttonSpinner: false
+    }),
     computed: {
 		tool() {
             return this.$store.state.tool
@@ -43,14 +41,17 @@ export default {
             this.buttonSpinner = true
             this.remove()
         },
+        
         remove() {
             const id = this.tool.id
             const title = this.tool.title
-            axios.delete(`${process.env.VUE_APP_BASE_API_URL}/tools/${id}`)
+
+            axios.delete(`${this.baseApiUrl}/tools/${id}`)
                 .then(() => {
                     this.$toasted.global.defaultSuccess({
                         msg: `The tool ${title} has been removed successfully`
                     })
+                    this.updateToolsList()
                     this.$bvModal.hide('delete-modal')
                 })
                 .catch(this.showError)

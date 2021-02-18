@@ -1,6 +1,9 @@
 import Vue from 'vue'
 
 export default {
+    data: () => ({
+        baseApiUrl: process.env.VUE_APP_BASE_API_URL
+    }),
 	methods: {
         showError(e) {
             if(e && e.response && e.response.data) {

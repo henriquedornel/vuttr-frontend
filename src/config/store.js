@@ -5,7 +5,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        modalTitle: '',
         tool: {},
         tools: [],
         search: '',

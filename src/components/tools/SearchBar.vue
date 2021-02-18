@@ -19,18 +19,16 @@ import tools from '@/mixins/tools'
 
 export default {
     mixins: [ tools ],
-	data() {
-		return {
-			search: '',
-			tagsOnly: false
-		}
-	},
+	data: () => ({
+        search: '',
+		tagsOnly: false
+    }),
 	methods: {
 		searchTools() {
 			this.$store.commit('mutate', { prop: 'searchSpinner', with: true })
 			this.$store.commit('mutate', { prop: 'search', with: this.search })
 			this.$store.commit('mutate', { prop: 'tagsOnly', with: this.tagsOnly })
-			this.loadTools()
+			this.updateToolsList()
 		}
 	},
 	watch: {

@@ -13,7 +13,7 @@
                 {{ tool.description }}
             </p>
             <p class="tool-tags" :class="$mq">
-                {{ tagsList(tool.tags) }}
+                {{ tagsToString(tool.tags) }}
             </p>
         </b-card-text>
     </b-card>
