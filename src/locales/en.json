@@ -1,10 +1,64 @@
 {
-    "app": {
-        "appTitle": "Very Useful Tools to Remember",
-        "pageTitle": "VUTTR | Very Useful Tools to Remember"
-    },
     "main": {
-        "company": "Test",
-        "welcome": "Hello {name}!"
+        "appTitle": "Very Useful Tools to Remember",
+        "pageTitle": "VUTTR | Very Useful Tools to Remember",
+        "tool": "tool"
+    },
+    "search": {
+        "placeholder": "search",
+        "tagsOnly": "Search in tags only"
+    },
+    "actions": {
+        "actions": "Actions",
+        "add": "Add",
+        "edit": "Edit",
+        "delete": "Remove"
+    },
+    "titles": {
+        "tool": {
+            "add": "Add new tool",
+            "edit": "Edit tool"
+        }         
+    },
+    "fields": {
+        "tool": {
+            "placeholder": "Enter Tool {field}...",
+            "title": "Title",
+            "link": "Link",
+            "description": "Description",
+            "tags": "Tags"
+        }        
+    },
+    "buttons": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "confirm": "Yes"
+    },
+    "spinners": {
+        "load": "Loading",
+        "search": "Searching",
+        "save": "Saving",
+        "delete": "Removing"
+    },
+    "messages": {
+        "emptyResult": "No tools were found with these keywords",
+        "requiredField": "Field \"{field}\" is required",
+        "defaultError": "Internal error: cannot connect to API",
+        "defaultSaved": "The record has been saved successfully",
+        "tool": {
+            "added": "added",
+            "updated": "updated",
+            "removed": "removed",
+            "confirmed": "The tool \"{title}\" has been {operation} successfully",
+            "exists": "There is already another tool registered with this title",
+            "notFound": "Tool not found",
+            "titleRequired": "Tool Title is required",
+            "linkRequired": "Tool Link is required"
+        }
+    },
+    "confirmations": {
+        "tool": {
+            "delete": "Are you sure you want to remove the tool \"{title}\"?"
+        }
     }
 }

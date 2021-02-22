@@ -29,17 +29,18 @@ export default {
             return `tool-${this.field.key}`
         },
         label() {
-            let label = `${this.field.caption}`
+            let label = this.$t(`fields.tool.${this.field.key}`)
             if(this.field.required) {
                 label += ' *';
             }
             return label
         },
         placeholder() {
-            return `Enter ${this.field.caption}...`
+            return this.$t('fields.tool.placeholder', { field: this.$t(`fields.tool.${this.field.key}`) })
         },
         invalidFeedback() {
-            return this.field.validationMsg || `Field "${this.field.caption}" is required`
+            return this.field.validationMsg
+                || this.$t('messages.requiredField', { field: this.$t(`fields.tool.${this.field.key}`) })
         }
     }
 }

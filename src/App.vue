@@ -1,6 +1,6 @@
 <template>
 	<div id="app" :class="$mq">
-		<Title title="VUTTR" :subtitle="$t('app.appTitle')" />
+		<Title title="VUTTR" :subtitle="$t('main.appTitle')" />
 		<Content />
 	</div>
 </template>
@@ -19,7 +19,7 @@ export default {
 					return
 				}
 				document.documentElement.lang = newLocale
-				document.title = this.$t('app.pageTitle')
+				document.title = this.$t('main.pageTitle')
 			},
 			{ immediate: true }
 		)

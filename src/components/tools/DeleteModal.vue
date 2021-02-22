@@ -2,17 +2,17 @@
     <b-modal id="delete-modal" centered hide-header @hidden="resetTool" @ok="handleRemove">
 		<input id="tool-id" type="hidden" v-model="tool.id" />
 		<p class="delete-msg">
-			Are you sure you want to remove the tool <strong>{{ tool.title }}</strong>?
-		</p>
+            {{ $t('confirmations.tool.delete', { title: tool.title }) }}
+        </p>
 		<template #modal-footer="{ ok, cancel }">
 			<b-button variant="secondary" class="modal-button" @click="cancel()"
-                :disabled="buttonSpinner">
-				Cancel
+                :disabled="buttonSpinner" :class="$mq">
+				{{ $t('buttons.cancel') }}
 			</b-button>
 			<b-button variant="danger" class="modal-button" @click="ok()"
-                :disabled="buttonSpinner">
-                <Spinner v-if="buttonSpinner" caption="Removing" size="small" />
-                <span v-else>Yes</span>
+                :disabled="buttonSpinner" :class="$mq">
+                <Spinner v-if="buttonSpinner" :caption="$t('spinners.delete')" size="small" />
+                <span v-else>{{ $t('buttons.confirm') }}</span>
 			</b-button>
 		</template>
 	</b-modal>
@@ -49,7 +49,10 @@ export default {
             axios.delete(`${this.baseApiUrl}/tools/${id}`)
                 .then(() => {
                     this.$toasted.global.defaultSuccess({
-                        msg: `The tool ${title} has been removed successfully`
+                        msg: this.$t(
+                            'messages.tool.confirmed',
+                            { title, operation: this.$t('messages.tool.removed') }
+                        )
                     })
                     this.updateToolsList()
                     this.$bvModal.hide('delete-modal')
@@ -63,13 +66,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #delete-modal .delete-msg {
     font-size: 20px;
     padding-top: 20px;
 }
 #delete-modal button.modal-button {
-    width: 98px; 
+    min-width: 98px;
+    padding: auto 20px; 
 	margin-left: 20px;
+	&.md,
+	&.sm,
+	&.xs {
+		margin-left: 8px;
+	}
 }
 </style>

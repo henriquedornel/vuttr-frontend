@@ -1,19 +1,19 @@
 <template>
 	<div class="tools">
-		<Spinner v-if="loadingSpinner" caption="Loading" variant="primary" size="large" />
+		<Spinner v-if="loadingSpinner" :caption="$t('spinners.load')" variant="primary" size="large" />
 		<div v-else class="tools-content">
 			<FormModal />
+			<DeleteModal />
 			<AddFirst v-if="addFirst" />
 			<div v-else>
 				<Menu />
-				<Spinner v-if="searchSpinner" caption="Searching" variant="primary" size="medium" />
+				<Spinner v-if="searchSpinner" :caption="$t('spinners.search')" variant="primary" size="medium" />
 				<div v-else>
 					<p v-if="emptyResult" class="empty-result">
-						No tools were found with these keywords
+						{{ $t('messages.emptyResult') }}
 					</p>
 					<div v-else>
 						<List :tools="tools" />
-						<DeleteModal />
 						<scroll-loader :loader-method="loadTools" :loader-disable="!loadMore" />
 					</div>
 				</div>							

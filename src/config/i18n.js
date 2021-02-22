@@ -19,35 +19,6 @@ export function getSupportedLocales() {
     return annotatedLocales
 }
 
-const supportedLocalesInclude = locale => Object.keys(supportedLocales).includes(locale)
-
-const getBrowserLocale = (options = {}) => {
-    const defaultOptions = { countryCodeOnly: false }  
-    const opt = { ...defaultOptions, ...options }
-
-    const navigatorLocale = navigator.languages !== undefined
-        ? navigator.languages[0]
-        : navigator.language
-
-    if(!navigatorLocale) {
-        return undefined
-    }
-  
-    const trimmedLocale = opt.countryCodeOnly
-        ? navigatorLocale.trim().split(/-|_/)[0]
-        : navigatorLocale.trim()
-  
-    return trimmedLocale
-}
-
-const getStartingLocale = () => {
-    const browserLocale = getBrowserLocale({ countryCodeOnly: false })
-
-    return supportedLocalesInclude(browserLocale)
-        ? browserLocale
-        : 'en'
-}
-
 const loadLocaleMessages = () => {
     const locales = require.context(
         '@/locales',
@@ -66,7 +37,7 @@ const loadLocaleMessages = () => {
 }
 
 export default new VueI18n({
-    locale: getStartingLocale(),
+    locale: 'en',
     fallbackLocale: 'en',
     messages: loadLocaleMessages()
 })

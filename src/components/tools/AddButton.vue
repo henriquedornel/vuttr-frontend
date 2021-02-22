@@ -1,9 +1,9 @@
 <template>    
     <div class="add-tool">
-        <b-button variant="success" :class="$mq" v-b-modal.form-modal>
+        <b-button variant="success" :class="`${$mq} ${$i18n.locale}`" v-b-modal.form-modal>
             <img src="@/assets/icons/add.svg" alt="" />
-            <span :class="$mq">
-                Add
+            <span :class="`${$mq} ${$i18n.locale}`">
+                {{ $t('actions.add') }}
             </span>
         </b-button>
     </div>
@@ -15,23 +15,26 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	width: 90px;
+	min-width: 90px;
 	padding: 8px;
 	&.md,
 	&.sm {
-		width: 75px;
+		min-width: 75px;
 	}
-	&.xs {
-		width: 50px;
+	&.xs,
+	&.sm.pt-BR {
+		min-width: 50px;
 	}
 }
 .add-tool button span {
+	padding: 0 8px;
 	font-size: 18px;
 	&.md,
 	&.sm {
 		font-size: 16px;
 	}
-	&.xs {
+	&.xs,
+	&.sm.pt-BR {
 		display: none;
 	}
 }

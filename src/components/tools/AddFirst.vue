@@ -1,7 +1,9 @@
 <template>    
     <div class="add-first" v-b-modal.form-modal>
         <i class="fa fa-plus"></i>
-        <span>Add tool</span>
+        <span>
+			{{ $t('actions.add') }} {{ $t('main.tool') }}
+		</span>
     </div>
 </template>
 

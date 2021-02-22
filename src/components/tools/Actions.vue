@@ -2,14 +2,16 @@
     <b-dropdown class="actions" variant="link" no-caret right>
         <template #button-content>
             <img src="@/assets/icons/menu.svg" alt="" />
-            <span class="sr-only">Actions</span>
+            <span class="sr-only">
+                {{ $t('actions.actions') }}
+            </span>
         </template>
         <b-dropdown-item v-b-modal.form-modal @click="loadTool(tool)">
-            Edit
+            {{ $t('actions.edit') }}
         </b-dropdown-item>
         <b-dropdown-divider></b-dropdown-divider>
         <b-dropdown-item v-b-modal.delete-modal variant="danger" @click="loadTool(tool)">
-            Remove
+            {{ $t('actions.delete') }}
         </b-dropdown-item>
     </b-dropdown>
 </template>

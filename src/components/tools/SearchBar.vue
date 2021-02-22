@@ -2,13 +2,14 @@
     <div class="search-bar" :class="$mq">
         <div class="search-input" :class="$mq">
             <img src="@/assets/icons/search.svg" alt="" />
-            <input type="search" placeholder="search" :value="search"
-				@input="e => search = e.target.value"
-				:class="$mq" autocorrect="off" autocapitalize="none" />
+            <input type="search" :placeholder="$t('search.placeholder')"
+				:value="search" @input="e => search = e.target.value"
+				:class="`${$mq} ${$i18n.locale}`"
+				autocorrect="off" autocapitalize="none" />
         </div>
-        <div class="search-checkbox" :class="$mq">
+        <div class="search-checkbox" :class="`${$mq} ${$i18n.locale}`">
             <b-form-checkbox name="search-tags" switch size="lg" v-model="tagsOnly">
-                Search in tags only
+                {{ $t('search.tagsOnly') }}
             </b-form-checkbox>
         </div>
     </div>
@@ -36,7 +37,9 @@ export default {
 			this.searchTools()
 		},
 		tagsOnly() {
-			this.searchTools()
+			if(this.search.trim() != '') {
+				this.searchTools()
+			}
 		}
 	}
 }
@@ -99,7 +102,8 @@ export default {
 		width: 180px;
 		height: 37px;
 	}
-	&.xs {
+	&.xs,
+	&.sm.pt-BR {
 		width: 140px;
 		height: 28px;
 		font-size: 15px;
@@ -115,7 +119,8 @@ export default {
 		margin-left: 0;
 		font-size: 15px;
 	}
-	&.xs {
+	&.xs,
+	&.sm.pt-BR {
 		margin-left: 0;
 		font-size: 15px;
 		.custom-switch.b-custom-control-lg .custom-control-label {

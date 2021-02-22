@@ -1,10 +1,64 @@
 {
-    "app": {
-        "appTitle": "Ferramentas muito úteis para se lembrar",
-        "pageTitle": "VUTTR | Ferramentas muito úteis para se lembrar"
-    },
     "main": {
-        "company": "Teste",
-        "welcome": "Bem-vindo {name}!"
+        "appTitle": "Ferramentas muito úteis para se lembrar",
+        "pageTitle": "VUTTR | Ferramentas muito úteis para se lembrar",
+        "tool": "ferramenta"
+    },
+    "search": {
+        "placeholder": "buscar",
+        "tagsOnly": "Buscar apenas em tags"
+    },
+    "actions": {
+        "actions": "Ações",
+        "add": "Adicionar",
+        "edit": "Editar",
+        "delete": "Remover"
+    },
+    "titles": {
+        "tool": {
+            "add": "Adicionar ferramenta",
+            "edit": "Editar ferramenta"
+        }         
+    },
+    "fields": {
+        "tool": {
+            "placeholder": "{field} da ferramenta...",
+            "title": "Título",
+            "link": "Link",
+            "description": "Descrição",
+            "tags": "Tags"
+        }        
+    },
+    "buttons": {
+        "save": "Salvar",
+        "cancel": "Cancelar",
+        "confirm": "Sim"
+    },
+    "spinners": {
+        "load": "Carregando",
+        "search": "Buscando",
+        "save": "Salvando",
+        "delete": "Removendo"
+    },
+    "messages": {
+        "emptyResult": "Nenhuma ferramenta foi encontrada com estas palavras-chave",
+        "requiredField": "O campo \"{field}\" é obrigatório",
+        "defaultError": "Erro interno: não foi possível se comunicar com a API",
+        "defaultSaved": "Registro salvo com sucesso",
+        "tool": {
+            "added": "adicionada",
+            "updated": "atualizada",
+            "removed": "removida",
+            "confirmed": "A ferramenta \"{title}\" foi {operation} com sucesso",
+            "exists": "Já existe outra ferramenta cadastrada com este título",
+            "notFound": "Ferramenta não encontrada",
+            "titleRequired": "O campo \"Título\" é obrigatório",
+            "linkRequired": "O campo \"Link\" é obrigatório"
+        }
+    },
+    "confirmations": {
+        "tool": {
+            "delete": "Tem certeza que deseja remover a ferramenta \"{title}\"?"
+        }
     }
 }

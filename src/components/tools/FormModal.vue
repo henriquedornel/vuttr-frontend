@@ -11,12 +11,14 @@
         <template #modal-footer="{ ok, cancel }">
             <b-button variant="secondary" class="modal-button" @click="cancel()" :class="$mq"
                 :disabled="buttonSpinner">
-                Cancel
+                {{ $t('buttons.cancel') }}
             </b-button>
             <b-button variant="primary" class="modal-button" @click="ok()" :class="$mq"
                 :disabled="buttonSpinner">
-                <Spinner v-if="buttonSpinner" caption="Saving" size="small" />
-                <span v-else>Save</span>                
+                <Spinner v-if="buttonSpinner" :caption="$t('spinners.save')" size="small" />
+                <span v-else>
+                    {{ $t('buttons.save') }}
+                </span>                
             </b-button>
         </template>
     </b-modal>
@@ -32,21 +34,23 @@ import tools from '@/mixins/tools'
 export default {
     components: { FormField, Spinner },
     mixins: [ tools ],    
-    data: () => ({
-        buttonSpinner: false,
-        fields: [
-			{ key: 'title', caption: 'Tool Name', type: 'input', maxlength: 50, state: null, required: true },
-			{ key: 'link', caption: 'Tool Link', type: 'input', maxlength: 255, state: null, required: true },
-			{ key: 'description', caption: 'Tool Description', type: 'text', maxlength: 400 },
-			{ key: 'tags', caption: 'Tags', type: 'input', maxlength: 140 },
-        ]
-    }),
+    data() {
+        return {
+            buttonSpinner: false,
+            fields: [
+                { key: 'title', type: 'input', maxlength: 50, state: null, required: true },
+                { key: 'link', type: 'input', maxlength: 255, state: null, required: true },
+                { key: 'description', type: 'text', maxlength: 400 },
+                { key: 'tags', type: 'input', maxlength: 140 },
+            ]
+        }        
+    },
     computed: {
 		tool() {
             return this.$store.state.tool
         },
         title() {
-            return this.tool.id ? 'Edit tool' : 'Add new tool'
+            return this.tool.id ? this.$t('titles.tool.edit') : this.$t('titles.tool.add')
         },
     },
     methods: {
@@ -73,13 +77,16 @@ export default {
             tool.tags = this.tagsToArray(tool.tags)
 
             const method = tool.id ? 'put' : 'post'
-            const operation = tool.id ? 'updated' : 'added'
+            const operation = this.$t(tool.id ? 'messages.tool.updated' : 'messages.tool.added')
             const id = tool.id ? `/${tool.id}` : ''
 
             axios[method](`${this.baseApiUrl}/tools${id}`, tool)
                 .then(() => {
                     this.$toasted.global.defaultSuccess({
-                        msg: `The tool ${tool.title} has been ${operation} successfully`
+                        msg: this.$t(
+                            'messages.tool.confirmed',
+                            { title: tool.title, operation }
+                        )
                     })
                     this.updateToolsList()
                     this.$bvModal.hide('form-modal')
@@ -125,7 +132,7 @@ export default {
 
         handleUrl(value) {
             value = this.removeSpaces(value)
-            if(value.substring(0, 7) !== 'http://' && value.substring(0, 8) !== 'https://') {
+            if(value && value.substring(0, 7) !== 'http://' && value.substring(0, 8) !== 'https://') {
                 value = 'http://' + value
             }
             return value
@@ -162,12 +169,13 @@ export default {
 	outline: 0;
 }
 #form-modal button.modal-button {
-    width: 98px; 
+    min-width: 98px;
+    padding: auto 20px; 
 	margin-left: 20px;
 	&.md,
 	&.sm,
 	&.xs {
-		margin-left: 10px;
+		margin-left: 8px;
 	}
 }
 </style>

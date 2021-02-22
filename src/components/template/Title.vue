@@ -3,7 +3,7 @@
 		<h1 :class="$mq">
 			<router-link to="/">{{ title }}</router-link>
 		</h1>
-		<h2 :class="$mq">
+		<h2 :class="`${$mq} ${$i18n.locale}`">
 			<router-link to="/">{{ subtitle }}</router-link>
 		</h2>		
 		<div class="locale-switcher">
@@ -56,8 +56,9 @@ export default {
 	&.sm {
 		font-size: 20px;
 	}
-	&.xs {
-		font-size: 16px;
+	&.xs,
+	&.sm.pt-BR {
+		font-size: 15px;
 	}
 }
 .title a,
