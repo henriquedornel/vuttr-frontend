@@ -1,6 +1,6 @@
 <template>    
-    <div class="add-first" v-b-modal.form-modal>
-        <i class="fa fa-plus"></i>
+    <div class="add-first" v-b-modal.tool-form-modal>
+        <fa-icon :icon="['fas', 'plus']" />
         <span>
 			{{ $t('actions.add') }} {{ $t('main.tool') }}
 		</span>
@@ -28,9 +28,8 @@
 		background: $light-blue;
 	}
 }
-.add-first i {
-	color: $blue;
-	font-size: 60px;
+.add-first svg {
+	font-size: 80px;
 	padding-bottom: 30px;
 }
 </style>

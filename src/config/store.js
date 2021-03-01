@@ -5,11 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        user: null,
         tool: {},
         tools: [],
         search: '',
         tagsOnly: false,
         searchSpinner: false,
+        buttonSpinner: false,
         count: 0,
         page: 1,
         limit: 3

@@ -8,13 +8,15 @@ $light-green: #12db89;
 $cyan: #2497b2;
 $purple: #9aaef7;
 $red: #f95e5a;
-$light-red: #feefee;
+$white-red: #feefee;
+$light-red: #fcd7d6;
 
 $gray-100: #f5f4f6;
 $gray-200: #ebeaed;
 $gray-300: #dedce1;
 $gray-400: #b1adb9;
 $gray-500: #8f8f9b;
+$gray-600: #8f8a9b;
 
 $font-family-base: 'Source Sans Pro', sans-serif;
 $headings-font-family: 'Source Sans Pro Semibold', sans-serif;
@@ -23,6 +25,7 @@ $headings-font-weight: 600;
 $primary: $blue;
 $secondary: $light-blue;
 $success: $green;
+$warning: $light-red;
 $info: $cyan;
 
 $input-btn-focus-width: 0;
@@ -63,6 +66,3 @@ $dropdown-link-active-color: $blue;
 $dropdown-link-active-bg: $light-blue;
 $dropdown-item-padding-y: 0.65rem;
 $dropdown-divider-margin-y: 0;
-
-@import '~bootstrap/scss/bootstrap.scss';
-@import '~bootstrap-vue/src/index.scss';

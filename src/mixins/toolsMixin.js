@@ -1,13 +1,9 @@
 import axios from 'axios'
-import global from '@/mixins/global'
+import globalMixin from '@/mixins/globalMixin'
 
 export default {
-    mixins: [ global ],
+    mixins: [ globalMixin ],
 	methods: {
-		resetTool() {
-            this.$store.commit('mutate', { prop: 'tool', with: {} })
-        },
-
         updateToolsList() {
             const search = this.$store.state.search
             const tagsOnly = this.$store.state.tagsOnly

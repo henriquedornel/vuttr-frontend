@@ -22,3 +22,11 @@ Vue.toasted.register(
         : i18n.tc(payload.msg),
     { type : 'error', icon : 'times' }
 )
+
+Vue.toasted.register(
+    'defaultInfo',
+    payload => !payload.msg
+        ? i18n.tc('messages.defaultError')
+        : i18n.tc(payload.msg),
+    { type : 'info', icon : 'times' }
+)

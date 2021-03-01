@@ -1,8 +1,21 @@
 {
     "main": {
-        "appTitle": "Very Useful Tools to Remember",
+        "appTitle": "VUTTR",
+        "appSubtitle": "Very Useful Tools to Remember",
         "pageTitle": "VUTTR | Very Useful Tools to Remember",
         "tool": "tool"
+    },
+    "user": {
+        "user": "User",
+        "profile": "Profile",
+        "profileEdit": "Edit Profile",
+        "changePassword": "Change password",
+        "signup": "Sign up",
+        "signin": "Sign in",
+        "signout": "Sign out",
+        "signupLink": "Not registered yet? Click here to register!",
+        "signinLink": "Already registered? Click here to enter!",
+        "delete": "Delete account"
     },
     "search": {
         "placeholder": "search",
@@ -21,6 +34,17 @@
         }         
     },
     "fields": {
+        "user": {
+            "placeholder": "Enter User {field}...",
+            "firstname": "First name",
+            "lastname": "Last name",
+            "email": "E-mail",
+            "password": "Password",
+            "passwordConfirmation": "Password confirmation",
+            "passwordOld": "Current password",
+            "passwordNew": "New password",
+            "passwordNewConfirmation": "New password confirmation"
+        },
         "tool": {
             "placeholder": "Enter Tool {field}...",
             "title": "Title",
@@ -35,6 +59,7 @@
         "confirm": "Yes"
     },
     "spinners": {
+        "auth": "Authenticating",
         "load": "Loading",
         "search": "Searching",
         "save": "Saving",
@@ -45,6 +70,30 @@
         "requiredField": "Field \"{field}\" is required",
         "defaultError": "Internal error: cannot connect to API",
         "defaultSaved": "The record has been saved successfully",
+        "user": {
+            "firstnameRequired": "User First name is required",
+            "lastnameRequired": "User Last name is required",
+            "emailRequired": "User E-mail is required",
+            "emailInvalid": "Invalid e-mail",
+            "passwordRequired": "Password is required",
+            "passwordConfirmationRequired": "Password Confirmation is required",
+            "passwordConfirmationMatch": "Password confirmation doesn't match Password",
+            "passwordNewConfirmationMatch": "Password confirmation doesn't match new password",
+            "passwordInvalid": "Password must contain at least 8 characters",
+            "passwordNewInvalid": "New password must contain at least 8 characters",
+            "passwordOldRequired": "Current password is required",
+            "passwordNewRequired": "New password is required",
+            "exists": "There is already another user registered with this e-mail",
+            "notFound": "User not found",
+            "emailPasswordRequired": "Enter user e-mail and password",
+            "passwordIncorrect": "The password is incorrect",
+            "passwordOldIncorrect": "Current password is incorrect",
+            "invalidToken": "Token expired. Please sign in again to continue.",
+            "welcome": "Welcome, {name}!",
+            "updated": "Profile updated successfully",
+            "passwordChanged": "Password changed successfully",
+            "accountDeleted": "Accounted deleted successfully"
+        },
         "tool": {
             "added": "added",
             "updated": "updated",
@@ -57,6 +106,9 @@
         }
     },
     "confirmations": {
+        "user": {
+            "delete": "Are you sure you want to permanently delete your account and all your registered tools?"
+        },
         "tool": {
             "delete": "Are you sure you want to remove the tool \"{title}\"?"
         }

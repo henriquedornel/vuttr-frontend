@@ -1,7 +1,7 @@
 <template>
     <div class="search-bar" :class="$mq">
         <div class="search-input" :class="$mq">
-            <img src="@/assets/icons/search.svg" alt="" />
+            <fa-icon :icon="['fas', 'search']" :class="`${$mq} ${$i18n.locale}`" />
             <input type="search" :placeholder="$t('search.placeholder')"
 				:value="search" @input="e => search = e.target.value"
 				:class="`${$mq} ${$i18n.locale}`"
@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import tools from '@/mixins/tools'
+import toolsMixin from '@/mixins/toolsMixin'
 
 export default {
-    mixins: [ tools ],
+    mixins: [ toolsMixin ],
 	data: () => ({
         search: '',
 		tagsOnly: false
@@ -69,9 +69,17 @@ export default {
 		margin-bottom: 5px;
 	}
 }
-.search-input img {
-	width: 32px;
-	padding: 0 8px;
+.search-input svg {
+	margin: 8px 8px 0;
+	color: $gray-400;
+	opacity: 0.7;
+	&.sm {
+		margin-top: 11px;
+	}
+	&.xs,
+	&.sm.pt-BR {
+		margin: 6px 6px 0;
+	}
 }
 .search-input input {
 	width: 180px;

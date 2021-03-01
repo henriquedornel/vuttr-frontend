@@ -1,7 +1,7 @@
 <template>    
     <div class="add-tool">
-        <b-button variant="success" :class="`${$mq} ${$i18n.locale}`" v-b-modal.form-modal>
-            <img src="@/assets/icons/add.svg" alt="" />
+        <b-button variant="success" :class="`${$mq} ${$i18n.locale}`" v-b-modal.tool-form-modal>
+            <fa-icon :icon="['fas', 'plus']" />
             <span :class="`${$mq} ${$i18n.locale}`">
                 {{ $t('actions.add') }}
             </span>
@@ -37,8 +37,5 @@
 	&.sm.pt-BR {
 		display: none;
 	}
-}
-.add-tool button img {
-	width: 15px;
 }
 </style>

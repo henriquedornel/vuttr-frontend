@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import Actions from '@/components/tools/Actions'
-import tools from '@/mixins/tools'
+import Actions from './Actions'
+import toolsMixin from '@/mixins/toolsMixin'
 
 export default {
 	components: { Actions },
-	mixins: [ tools ],
+	mixins: [ toolsMixin ],
     props: [ 'tool' ]
 }
 </script>

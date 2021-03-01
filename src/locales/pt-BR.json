@@ -1,8 +1,21 @@
 {
     "main": {
-        "appTitle": "Ferramentas muito úteis para se lembrar",
+        "appTitle": "VUTTR",
+        "appSubtitle": "Ferramentas muito úteis para se lembrar",
         "pageTitle": "VUTTR | Ferramentas muito úteis para se lembrar",
         "tool": "ferramenta"
+    },
+    "user": {
+        "user": "Usuário",
+        "profile": "Perfil",
+        "profileEdit": "Editar Perfil",
+        "changePassword": "Alterar senha",
+        "signup": "Criar conta",
+        "signin": "Entrar",
+        "signout": "Sair",
+        "signupLink": "Não tem cadastro? Registre-se aqui!",
+        "signinLink": "Já tem cadastro? Clique aqui para entrar!",
+        "delete": "Excluir conta"
     },
     "search": {
         "placeholder": "buscar",
@@ -21,6 +34,17 @@
         }         
     },
     "fields": {
+        "user": {
+            "placeholder": "{field} da usuário...",
+            "firstname": "Nome",
+            "lastname": "Sobrenome",
+            "email": "E-mail",
+            "password": "Senha",
+            "passwordConfirmation": "Senha (confirmação)",
+            "passwordOld": "Senha atual",
+            "passwordNew": "Nova senha",
+            "passwordNewConfirmation": "Nova senha (confirmação)"
+        },
         "tool": {
             "placeholder": "{field} da ferramenta...",
             "title": "Título",
@@ -35,6 +59,7 @@
         "confirm": "Sim"
     },
     "spinners": {
+        "auth": "Autenticando",
         "load": "Carregando",
         "search": "Buscando",
         "save": "Salvando",
@@ -45,6 +70,30 @@
         "requiredField": "O campo \"{field}\" é obrigatório",
         "defaultError": "Erro interno: não foi possível se comunicar com a API",
         "defaultSaved": "Registro salvo com sucesso",
+        "user": {
+            "firstnameRequired": "O campo \"Nome\" é obrigatório",
+            "lastnameRequired": "O campo \"Sobrenome\" é obrigatório",
+            "emailRequired": "O campo \"E-mail\" é obrigatório",
+            "emailInvalid": "E-mail inválido",
+            "passwordRequired": "O campo \"Senha\" é obrigatório",
+            "passwordConfirmationRequired": "O campo \"Senha (confirmação)\" é obrigatório",
+            "passwordConfirmationMatch": "A senha e a confirmação não conferem",
+            "passwordNewConfirmationMatch": "A nova senha e a confirmação não conferem",
+            "passwordInvalid": "A senha deve conter no mínimo 8 caracteres",
+            "passwordNewInvalid": "A nova senha deve conter no mínimo 8 caracteres",
+            "passwordOldRequired": "O campo \"Senha atual\" é obrigatório",
+            "passwordNewRequired": "O campo \"Nova senha\" é obrigatório",
+            "exists": "Já existe outro usuário cadastrado com este e-mail",
+            "notFound": "Usuário não encontrado",
+            "emailPasswordRequired": "Informe o e-mail e senha do usuário",
+            "passwordIncorrect": "A senha está incorreta",
+            "passwordOldIncorrect": "A senha atual está incorreta",
+            "invalidToken": "Token expirado. Faça login novamente para continuar.",
+            "welcome": "Olá, {name}!",
+            "updated": "Perfil atualizado com sucesso",
+            "passwordChanged": "Senha alterada com sucesso",
+            "accountDeleted": "Conta excluída com sucesso"
+        },
         "tool": {
             "added": "adicionada",
             "updated": "atualizada",
@@ -57,6 +106,9 @@
         }
     },
     "confirmations": {
+        "user": {
+            "delete": "Tem certeza que deseja excluir a sua conta e todas as suas ferramentas cadastradas?"
+        },
         "tool": {
             "delete": "Tem certeza que deseja remover a ferramenta \"{title}\"?"
         }

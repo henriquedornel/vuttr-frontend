@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import App from './App'
 
+import './config/font-awesome'
 import './config/bootstrap'
 import './config/mq'
-import './config/axios'
 import './config/scroll-loader'
 import './config/toasted'
-
-import 'font-awesome/css/font-awesome.css'
 
 import router from './config/router'
 import store from './config/store'

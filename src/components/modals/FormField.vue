@@ -1,16 +1,16 @@
 <template>
     <b-form-group class="form-field" :label="label" :label-for="fieldId"
         :class="$mq" :invalid-feedback="invalidFeedback">
-        <b-form-input v-if="field.type === 'input'"
+        <b-form-textarea v-if="field.type === 'textarea'"
             :id="fieldId" :placeholder="placeholder"
-            v-model="tool[field.key]" :maxlength="field.maxlength"
+            v-model="record[field.key]" :maxlength="field.maxlength"
+            rows="3" no-resize :required="field.required"
+            :state="field.state" :disabled="disabled" />
+        <b-form-input v-else :type="field.type || 'text'"
+            :id="fieldId" :placeholder="placeholder"
+            v-model="record[field.key]" :maxlength="field.maxlength"
             autocomplete="off" :required="field.required"
             autocorrect="off" autocapitalize="none"
-            :state="field.state" :disabled="disabled" />
-        <b-form-textarea v-else-if="field.type === 'text'"
-            :id="fieldId" :placeholder="placeholder"
-            v-model="tool[field.key]" :maxlength="field.maxlength"
-            rows="3" no-resize :required="field.required"
             :state="field.state" :disabled="disabled" />
     </b-form-group>
 </template>
@@ -18,29 +18,36 @@
 <script>
 export default {
     props: {
+        entity: String,
         field: Object,
         disabled: Boolean
     },
     computed: {        
-        tool() {
-            return this.$store.state.tool
+        record() {
+            return this.$store.state[this.entity]
         },
         fieldId() {
-            return `tool-${this.field.key}`
+            return `${this.entity}-${this.field.key}`
         },
         label() {
-            let label = this.$t(`fields.tool.${this.field.key}`)
+            let label = this.$t(`fields.${this.entity}.${this.field.key}`)
             if(this.field.required) {
                 label += ' *';
             }
             return label
         },
         placeholder() {
-            return this.$t('fields.tool.placeholder', { field: this.$t(`fields.tool.${this.field.key}`) })
+            return this.$t(
+                `fields.${this.entity}.placeholder`,
+                { field: this.$t(`fields.${this.entity}.${this.field.key}`) }
+            )
         },
         invalidFeedback() {
             return this.field.validationMsg
-                || this.$t('messages.requiredField', { field: this.$t(`fields.tool.${this.field.key}`) })
+                || this.$t(
+                    'messages.requiredField',
+                    { field: this.$t(`fields.${this.entity}.${this.field.key}`) }
+                )
         }
     }
 }
@@ -53,7 +60,6 @@ export default {
     label {
         font-size: 18px;
         font-weight: bold;
-        text-transform: capitalize;
     }
     &.md,
     &.sm,
@@ -69,8 +75,7 @@ export default {
 }
 .form-field input.is-invalid,
 .form-field textarea.is-invalid {
-    background: $light-red;
-    
+    background: $white-red;
 }
 .form-field.form-group.is-invalid {
 	margin: 0;
