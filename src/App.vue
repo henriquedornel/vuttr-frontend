@@ -75,13 +75,11 @@ export default {
 @import '~bootstrap-vue/src/index.scss';
 
 #app {
+	width: 80vw;
 	max-width: 890px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	&.lg {
-		width: 80vw;
-	}
 	&.md,
 	&.sm,
 	&.xs {

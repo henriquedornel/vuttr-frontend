@@ -33,7 +33,7 @@ export default {
 	&.md,
 	&.sm,
 	&.xs {
-		margin: 25px 0 0 0;
+		margin: 45px 0 0 0;
 	}
 }
 .header header {

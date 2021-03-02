@@ -1,24 +1,21 @@
 <template>
 	<div class="auth">
         <h1>{{ showSignup ? $t('user.signup') : $t('user.signin') }}</h1>
-        <b-form>
+        <b-form @submit.prevent="showSignup ? signup() : signin()" :class="$mq">
 			<b-form-group v-for="field in fields" :key="field.key">
 				<b-form-input v-if="!field.display ? showSignup : field.display"
 					:type="field.type || 'text'" :name="field.key" v-model="user[field.key]"
                     :placeholder="$t(`fields.user.${field.key}`)" :disabled="buttonSpinner"
-					autocomplete="off" autocorrect="off" autocapitalize="none" />
+					autocorrect="off" autocapitalize="none" />
 			</b-form-group>
-
-			<b-button v-if="showSignup" variant="primary" @click="signup" :disabled="buttonSpinner">
-                <Spinner v-if="buttonSpinner" :caption="$t('spinners.save')" size="small" />
-                <span v-else>{{ $t('user.signup') }}</span>                
+			<b-button type="submit" variant="primary" block :disabled="buttonSpinner">
+                <Spinner v-if="buttonSpinner" size="small"
+                    :caption="showSignup ? $t('spinners.save') : $t('spinners.auth')" />
+                <span v-else>
+                    {{ showSignup ? $t('user.signup') : $t('user.signin') }}
+                </span>                
             </b-button>
-            <b-button v-else variant="primary" @click="signin" :disabled="buttonSpinner">
-                <Spinner v-if="buttonSpinner" :caption="$t('spinners.auth')" size="small" />
-                <span v-else>{{ $t('user.signin') }}</span>                
-            </b-button>
-
-            <a href @click.prevent="showSignup = !showSignup">
+            <a href @click.prevent="showSignup = !showSignup" :class="$mq">
                 <span v-if="showSignup">{{ $t('user.signinLink') }}</span>
                 <span v-else>{{ $t('user.signupLink') }}</span>
             </a>
@@ -105,7 +102,7 @@ export default {
     justify-content: center;
 }
 .auth h1 {
-    padding-top: 10px;
+    padding-top: 20px;
     font-size: 1.2rem;
 }
 .auth form {
@@ -113,6 +110,10 @@ export default {
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
+	&.sm,
+	&.xs {
+		width: 100%;
+	}
 }
 .auth form .form-group {
     width: 100%;
@@ -135,5 +136,11 @@ export default {
     min-height: 40px;
     margin: 5px 0 25px 0;
     padding: auto 20px;
+}
+.auth form a {
+    text-align: center;
+	&.xs {
+        font-size: 0.85rem;
+	}
 }
 </style>
