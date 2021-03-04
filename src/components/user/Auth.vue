@@ -1,42 +1,48 @@
 <template>
 	<div class="auth">
-        <h1>{{ showSignup ? $t('user.signup') : $t('user.signin') }}</h1>
-        <b-form @submit.prevent="showSignup ? signup() : signin()" :class="$mq">
-			<b-form-group v-for="field in fields" :key="field.key">
-				<b-form-input v-if="!field.display ? showSignup : field.display"
-					:type="field.type || 'text'" :name="field.key" v-model="user[field.key]"
-                    :placeholder="$t(`fields.user.${field.key}`)" :disabled="buttonSpinner"
-					autocorrect="off" autocapitalize="none" />
-			</b-form-group>
-			<b-button type="submit" variant="primary" block :disabled="buttonSpinner">
+        <h1>{{ showSignUp ? $t('user.signUp') : $t('user.signIn') }}</h1>
+        <b-form @submit.prevent="showSignUp ? signUp() : signIn()" :class="$mq">
+            <b-form-group v-for="field in fields" :key="field.key">
+                <b-form-input v-if="!field.display ? showSignUp : field.display"
+                    :type="field.type || 'text'" :name="field.key" v-model="user[field.key]"
+                    :placeholder="$t(`fields.user.${field.key}`)" :disabled="loginSpinner || buttonSpinner"
+                    autocorrect="off" autocapitalize="none" />
+            </b-form-group>
+            <b-button type="submit" variant="primary" block :disabled="loginSpinner || buttonSpinner">
                 <Spinner v-if="buttonSpinner" size="small"
-                    :caption="showSignup ? $t('spinners.save') : $t('spinners.auth')" />
+                    :caption="showSignUp ? $t('spinners.save') : $t('spinners.auth')" />
                 <span v-else>
-                    {{ showSignup ? $t('user.signup') : $t('user.signin') }}
+                    {{ showSignUp ? $t('user.signUp') : $t('user.signIn') }}
                 </span>                
             </b-button>
-            <a href @click.prevent="showSignup = !showSignup" :class="$mq">
-                <span v-if="showSignup">{{ $t('user.signinLink') }}</span>
-                <span v-else>{{ $t('user.signupLink') }}</span>
+            <div v-if="loginSpinner" class="login-spinner">
+                <Spinner :caption="$t('spinners.auth')" variant="primary" size="small" />
+            </div>
+            <div v-else class="signin-choice"><span>{{ $t('user.signInWith') }}</span></div>
+            <SocialSignIn />
+            <a href @click.prevent="showSignUp = !showSignUp" :class="$mq">
+                <span v-if="showSignUp">{{ $t('user.signInLink') }}</span>
+                <span v-else>{{ $t('user.signUpLink') }}</span>
             </a>
-		</b-form>
+        </b-form>
 	</div>
 </template>
 
 <script>
 import Spinner from '@/components/template/Spinner'
+import SocialSignIn from '@/components/user/SocialSignIn'
 
-import axios from 'axios'
+import { mapState } from 'vuex'
 import userMixin from '@/mixins/userMixin'
 
 export default {
-	components: { Spinner },
+	components: { Spinner, SocialSignIn },
     mixins: [ userMixin ],
+    computed: mapState(['loginSpinner', 'buttonSpinner']),
 	data() {
 		return {
             user: {},
-            showSignup: false,
-            buttonSpinner: false,
+            showSignUp: false,
             fields: [
                 { key: 'firstname', display: false },
                 { key: 'lastname', display: false },
@@ -49,46 +55,8 @@ export default {
     mounted() {
         this.setUser(null)
         localStorage.removeItem(this.userKey)
-    },
-	methods: {        
-        signup() {
-            this.buttonSpinner = true
-
-            const user = { ...this.user }
-            user.firstname = this.removeExtraSpaces(user.firstname),
-            user.lastname = this.removeExtraSpaces(user.lastname),
-
-            axios.post(`${this.baseApiUrl}/signup`, user)
-                .then(() => {
-                    this.signin()
-                })
-                .catch(this.showError)
-                .finally(() => {
-                    this.buttonSpinner = false
-                })
-        },
-        signin() {
-            this.buttonSpinner = true
-
-            axios.post(`${this.baseApiUrl}/signin`, this.user)
-                .then(res => {
-                    let name = res.data.firstname
-                    if(res.data.lastname) {
-                        name += ' ' + res.data.lastname
-                    }
-                    this.$toasted.global.defaultSuccess({
-                        msg: this.$t('messages.user.welcome', { name })
-                    })
-                    this.setUser(res.data)
-                    localStorage.setItem(this.userKey, JSON.stringify(res.data))
-                    this.$router.push({ path: '/' })
-                })
-                .catch(this.showError)
-                .finally(() => {
-                    this.buttonSpinner = false
-                })
-        }
-	}
+        this.$store.commit('mutate', { prop: 'loginSpinner', with: false })
+    }
 }
 </script>
 
@@ -113,6 +81,7 @@ export default {
 	&.sm,
 	&.xs {
 		width: 100%;
+        font-size: 0.95rem;
 	}
 }
 .auth form .form-group {
@@ -131,16 +100,27 @@ export default {
 	text-align: right;
 }
 .auth form button {
-    align-self: flex-end;
     min-width: 98px;
     min-height: 40px;
-    margin: 5px 0 25px 0;
+    margin-top: 5px;
     padding: auto 20px;
+}
+.auth .signin-choice {
+	padding: 15px 0 5px 0;
+    font-size: 16px;
+    color: $gray-700;
+    text-align: center;
+}
+.auth .login-spinner .spinner {
+	margin: 15px 0 10px 0;
 }
 .auth form a {
     text-align: center;
 	&.xs {
         font-size: 0.85rem;
 	}
+    &:hover {
+        text-decoration: none;
+    }
 }
 </style>

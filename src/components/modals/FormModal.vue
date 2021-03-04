@@ -8,7 +8,7 @@
         <form ref="form">
             <input :id="`${entity}-id`" type="hidden" v-model="record.id" />
             <FormField v-for="field in fields" :key="field.key"
-                :entity="entity" :field="field" :disabled="buttonSpinner" />
+                :entity="entity" :field="field" :disabled="field.disabled || buttonSpinner" />
         </form>
         <template #modal-footer="{ ok, cancel }">
             <div class="form-modal-buttons">
@@ -25,8 +25,7 @@
             <div class="form-modal-buttons">
                 <b-button v-if="deleteButton" variant="warning" class="delete-button" :class="$mq"
                     v-b-modal="`${entity}-delete-modal`" :disabled="buttonSpinner">
-                    <Spinner v-if="buttonSpinner" :caption="$t('spinners.delete')" size="small" />
-                    <span v-else>{{ deleteButton }}</span>
+                    <span>{{ deleteButton }}</span>
                 </b-button> 
             </div>           
         </template>

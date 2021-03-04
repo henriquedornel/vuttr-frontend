@@ -83,4 +83,7 @@ export default {
 .form-field .invalid-feedback {
 	text-align: right;
 }
+.form-field .form-control:disabled {
+    color: $gray-600;
+}
 </style>

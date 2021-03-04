@@ -1,8 +1,8 @@
 $body-color: #170c3a;
 $white: #fff;
 $blue: #365df0;
-$light-blue: #e1e7fd;
-$white-blue: #b9c6fa;
+$white-blue: #e1e7fd;
+$light-blue: #b9c6fa;
 $green: #0dcb7d;
 $light-green: #12db89;
 $cyan: #2497b2;
@@ -17,13 +17,14 @@ $gray-300: #dedce1;
 $gray-400: #b1adb9;
 $gray-500: #8f8f9b;
 $gray-600: #8f8a9b;
+$gray-700: #5b6987;
 
 $font-family-base: 'Source Sans Pro', sans-serif;
 $headings-font-family: 'Source Sans Pro Semibold', sans-serif;
 $headings-font-weight: 600;
 
 $primary: $blue;
-$secondary: $light-blue;
+$secondary: $white-blue;
 $success: $green;
 $warning: $light-red;
 $info: $cyan;
@@ -61,8 +62,8 @@ $dropdown-border-color: $gray-200;
 $dropdown-box-shadow: 0 20px 25px #0000001A;
 $dropdown-link-color: $gray-500;
 $dropdown-link-hover-color: $blue;
-$dropdown-link-hover-bg: $light-blue;
+$dropdown-link-hover-bg: $white-blue;
 $dropdown-link-active-color: $blue;
-$dropdown-link-active-bg: $light-blue;
+$dropdown-link-active-bg: $white-blue;
 $dropdown-item-padding-y: 0.65rem;
 $dropdown-divider-margin-y: 0;

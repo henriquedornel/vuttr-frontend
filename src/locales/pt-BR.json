@@ -10,11 +10,13 @@
         "profile": "Perfil",
         "profileEdit": "Editar Perfil",
         "changePassword": "Alterar senha",
-        "signup": "Criar conta",
-        "signin": "Entrar",
-        "signout": "Sair",
-        "signupLink": "Não tem cadastro? Registre-se aqui!",
-        "signinLink": "Já tem cadastro? Clique aqui para entrar!",
+        "changePhoto": "Alterar foto",
+        "signUp": "Criar conta",
+        "signIn": "Entrar",
+        "signOut": "Sair",
+        "signInWith": "ou entre com",
+        "signUpLink": "Não tem cadastro? Registre-se aqui!",
+        "signInLink": "Já tem cadastro? Clique aqui para entrar!",
         "delete": "Excluir conta"
     },
     "search": {
@@ -92,7 +94,8 @@
             "welcome": "Olá, {name}!",
             "updated": "Perfil atualizado com sucesso",
             "passwordChanged": "Senha alterada com sucesso",
-            "accountDeleted": "Conta excluída com sucesso"
+            "accountDeleted": "Conta excluída com sucesso",
+            "googleError": "Não foi possível fazer login com o Google"
         },
         "tool": {
             "added": "adicionada",

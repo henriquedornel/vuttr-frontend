@@ -10,11 +10,13 @@
         "profile": "Profile",
         "profileEdit": "Edit Profile",
         "changePassword": "Change password",
-        "signup": "Sign up",
-        "signin": "Sign in",
-        "signout": "Sign out",
-        "signupLink": "Not registered yet? Click here to register!",
-        "signinLink": "Already registered? Click here to enter!",
+        "changePhoto": "Change photo",
+        "signUp": "Sign up",
+        "signIn": "Sign in",
+        "signOut": "Sign out",
+        "signInWith": "or sign in with",
+        "signUpLink": "Not registered yet? Click here to register!",
+        "signInLink": "Already registered? Click here to enter!",
         "delete": "Delete account"
     },
     "search": {
@@ -92,7 +94,8 @@
             "welcome": "Welcome, {name}!",
             "updated": "Profile updated successfully",
             "passwordChanged": "Password changed successfully",
-            "accountDeleted": "Accounted deleted successfully"
+            "accountDeleted": "Accounted deleted successfully",
+            "googleError": "Unable to sign in with Google"
         },
         "tool": {
             "added": "added",

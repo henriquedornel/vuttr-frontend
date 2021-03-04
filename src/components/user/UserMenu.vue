@@ -4,17 +4,21 @@
             <template #button-content>
                 <span :class="$mq">{{ userInfo.firstname }}</span>
                 <div class="user-img" :class="$mq">
-                    <Gravatar :email="userInfo.email" :alt="$t('user.user')" />
+                    <Gravatar v-if="isInternalLogin()" :email="userInfo.email" :alt="$t('user.user')" />
+                    <img v-else :src="user.photo" :alt="$t('user.user')">
                 </div>
             </template>
             <b-dropdown-item v-b-modal.user-profile-modal>
                 {{ $t('user.profile') }}
             </b-dropdown-item>
-            <b-dropdown-item v-b-modal.user-password-modal>
+            <b-dropdown-item v-if="isInternalLogin()" href="https://gravatar.com" target="_blank">
+                {{ $t('user.changePhoto') }}
+            </b-dropdown-item>
+            <b-dropdown-item v-if="isInternalLogin()" v-b-modal.user-password-modal>
                 {{ $t('user.changePassword') }}
             </b-dropdown-item>
-            <b-dropdown-item @click="signout">
-                {{ $t('user.signout') }}
+            <b-dropdown-item @click="signOut">
+                {{ $t('user.signOut') }}
             </b-dropdown-item>
         </b-dropdown>
 		<FormModal entity="user" :record="user" name="user-profile-modal"
@@ -39,7 +43,6 @@ import Gravatar from 'vue-gravatar'
 
 import axios from 'axios'
 import userMixin from '@/mixins/userMixin'
-import { mapState } from 'vuex'
 
 export default {
     components: { FormModal, DeleteModal, Gravatar },
@@ -50,7 +53,7 @@ export default {
             profileFields: [
                 { key: 'firstname', state: null, required: true },
                 { key: 'lastname' },
-                { key: 'email', state: null, required: true,
+                { key: 'email', state: null, required: true, disabled: !this.isInternalLogin(),
                     validation: 'checkEmail', validationMsg: this.$t('messages.user.emailInvalid') }
             ],
             passwordFields: [
@@ -64,8 +67,14 @@ export default {
             ]
         }
     },
-	computed: mapState(['user']),
+	computed: {        
+		user() { return this.$store.state.user }
+    },
     methods: {
+        isInternalLogin() {
+            return this.$store.state.user.loginType === 'internal'
+        },
+
         resetUser() {
             const json = localStorage.getItem(this.userKey)
 			const userData = JSON.parse(json)
@@ -106,7 +115,7 @@ export default {
                     this.$toasted.global.defaultSuccess({
                         msg: this.$t('messages.user.accountDeleted')
                     })
-                    this.signout()
+                    this.signOut()
                 })
                 .catch(this.showError)
                 .finally(() => {
@@ -128,7 +137,7 @@ export default {
                 })
         },
 
-        signout() {
+        signOut() {
             this.setUser(null)
             localStorage.removeItem(this.userKey)
 

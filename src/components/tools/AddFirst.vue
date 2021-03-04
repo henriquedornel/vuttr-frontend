@@ -21,11 +21,11 @@
 	margin-top: 60px;
 	color: $blue;
 	font-weight: bold;
-	background: rgb($light-blue, 26%);
+	background: rgb($white-blue, 26%);
 	border: 3px dashed $purple;
 	outline: 0;
 	&:hover {
-		background: $light-blue;
+		background: $white-blue;
 	}
 }
 .add-first svg {

@@ -6,6 +6,7 @@ import './config/bootstrap'
 import './config/mq'
 import './config/scroll-loader'
 import './config/toasted'
+import './config/google'
 
 import router from './config/router'
 import store from './config/store'

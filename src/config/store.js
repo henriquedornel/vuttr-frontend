@@ -10,6 +10,7 @@ export default new Vuex.Store({
         tools: [],
         search: '',
         tagsOnly: false,
+        loginSpinner: false,
         searchSpinner: false,
         buttonSpinner: false,
         count: 0,
